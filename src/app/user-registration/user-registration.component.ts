@@ -7,7 +7,7 @@ import { of } from 'rxjs';
 @Component({
   selector: 'app-user-registration',
   templateUrl: './user-registration.component.html',
-  styleUrls: ['./user-registration.component.scss'],
+  styleUrls: ['./user-registration.component.css'],
 })
 export class UserRegistrationComponent implements OnInit {
   registrationForm: FormGroup;
@@ -17,6 +17,10 @@ export class UserRegistrationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initializeForm();
+  }
+
+  private initializeForm() {
     this.registrationForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)], [this.usernameValidator()]],
       email: ['', [Validators.required, Validators.email]],
